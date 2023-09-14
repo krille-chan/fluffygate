@@ -24,3 +24,4 @@ jobs:
         upload_url: ${{ github.event.release.upload_url }}
         asset_path: fluffygate
         asset_name: fluffygate
+        asset_content_type: application/octet-stream
