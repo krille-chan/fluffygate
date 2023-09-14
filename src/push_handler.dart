@@ -63,7 +63,9 @@ Future<Response> pushHandler(
 
     if (device.isDataMessage) body['android']?.remove('notification');
 
-    final jsonBody = jsonEncode(body).replaceAll('{count}', unread.toString());
+    final jsonBody = jsonEncode(body)
+        .replaceAll('"{count}"', unread.toString())
+        .replaceAll('{count}', unread.toString());
     print('Send to FCM:--->\n$jsonBody');
     final response = await client.post(
       uri,
