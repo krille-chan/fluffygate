@@ -61,7 +61,9 @@ Future<Response> pushHandler(
       },
     };
 
-    if (device.isDataMessage) body['android']?.remove('notification');
+    if (device.isDataMessage) {
+      (body['message']?['android'] as Map?)?.remove('notification');
+    }
 
     final jsonBody = jsonEncode(body)
         .replaceAll('"{count}"', unread.toString())
