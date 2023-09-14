@@ -1,0 +1,28 @@
+# HTTP Server configurations
+port: 8080
+bindAddress: "127.0.0.1"
+
+# You firebase project ID and the path to the key file for your service account.
+# Learn more at:
+# https://firebase.google.com/docs/cloud-messaging/auth-server
+projectId: "your-project-ID-here"
+fcmKeyFilePath: "./fcmKeyFile.json"
+
+# The default notification title and body. {count} will be replaced by the unread
+# count of the push notification. Won't be set by default for clearing notifications.
+notificationTitle: "{count} new messages"
+notificationBody: "Open app to read the messages"
+
+# (Optional) Add json keys to send to fcm for android and apns configurations. Learn more at
+# https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
+# In any case the priority will be set to high on Android and to 10 on apns.
+androidNotificationOptions:
+  priority: high
+  notification:
+    sound: "default"
+    icon: "notifications_icon"
+    tag: "default_notification"
+    channel_id: "fluffygate"
+apnsNotificationOptions:
+  headers:
+    apns-priority: "10"

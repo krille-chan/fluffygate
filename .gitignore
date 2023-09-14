@@ -1,0 +1,7 @@
+# https://dart.dev/guides/libraries/private-files
+# Created by `dart pub`
+.dart_tool/
+
+# To not accidentally expose fcm key files
+*.json
+config.yaml
