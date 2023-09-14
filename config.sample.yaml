@@ -2,6 +2,9 @@
 port: 8080
 bindAddress: "127.0.0.1"
 
+# (Optional) Display logs for debugging
+debugLogs: false
+
 # You firebase project ID and the path to the key file for your service account.
 # Learn more at:
 # https://firebase.google.com/docs/cloud-messaging/auth-server
@@ -13,16 +16,18 @@ fcmKeyFilePath: "./fcmKeyFile.json"
 notificationTitle: "{count} new messages"
 notificationBody: "Open app to read the messages"
 
-# (Optional) Add json keys to send to fcm for android and apns configurations. Learn more at
+# Add json keys to send to fcm for android and apns configurations. Learn more at
 # https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
-# In any case the priority will be set to high on Android and to 10 on apns.
 androidNotificationOptions:
   priority: high
   notification:
     sound: "default"
     icon: "notifications_icon"
     tag: "default_notification"
-    channel_id: "fluffygate"
 apnsNotificationOptions:
   headers:
     apns-priority: "10"
+  aps:
+    sound: "default"
+    badge: "{count}"
+    mutable-content: 1

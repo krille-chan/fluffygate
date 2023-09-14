@@ -68,12 +68,12 @@ Future<Response> pushHandler(
     final jsonBody = jsonEncode(body)
         .replaceAll('"{count}"', unread.toString())
         .replaceAll('{count}', unread.toString());
-    print('Send to FCM:--->\n$jsonBody');
+    if (config.debugLogs) print('Send to FCM:--->\n$jsonBody');
     final response = await client.post(
       uri,
       body: jsonBody,
     );
-    print('<--- Response from FCM:\n${response.body}');
+    if (config.debugLogs) print('<--- Response from FCM:\n${response.body}');
 
     if (response.statusCode != 200) rejected.add(device.pushkey);
   }

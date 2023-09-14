@@ -10,7 +10,6 @@ import 'push_handler.dart';
 import 'status_handler.dart';
 
 void init(String configFilePath) async {
-  print('Welcome to FluffyGate <3');
   final config = Config.fromConfigFilePath(configFilePath);
   final fcmKeyJson = jsonDecode(
     File(config.fcmKeyFilePath).readAsStringSync(),

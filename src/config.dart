@@ -15,6 +15,8 @@ class Config {
   final Map<String, Object?> androidNotificationOptions;
   final Map<String, Object?> apnsNotificationOptions;
 
+  final bool debugLogs;
+
   const Config({
     required this.port,
     required this.bindAddress,
@@ -24,6 +26,7 @@ class Config {
     required this.notificationBody,
     required this.androidNotificationOptions,
     required this.apnsNotificationOptions,
+    required this.debugLogs,
   });
 
   factory Config.fromConfigFilePath(String configFilePath) {
@@ -40,6 +43,7 @@ class Config {
           Map<String, Object?>.from(yaml['androidNotificationOptions']),
       apnsNotificationOptions:
           Map<String, Object?>.from(yaml['apnsNotificationOptions']),
+      debugLogs: yaml['debugLogs'] ?? false,
     );
   }
 }
