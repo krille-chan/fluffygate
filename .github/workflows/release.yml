@@ -1,0 +1,26 @@
+name: Build and Release
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - uses: actions/checkout@v3
+    - uses: dart-lang/setup-dart@v1
+    - run: dart pub get
+    - run: dart compile exe bin/server.dart -o fluffygate
+    - name: Upload to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: fluffygate
+        asset_name: fluffygate
