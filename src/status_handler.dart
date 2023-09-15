@@ -34,5 +34,7 @@ Future<Response> statusHandler(Request request, Config config) async {
 </html>
 ''';
 
-  return Response.ok(html);
+  const headers = {'Content-Type': 'text/html'};
+
+  return Response.ok(html, headers: headers);
 }
