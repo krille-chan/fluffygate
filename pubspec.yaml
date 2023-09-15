@@ -1,6 +1,6 @@
 name: fluffygate
 description: Dead simple push gateway for Matrix to Firebase Cloud Messaging written in Dart.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/krille-chan/fluffygate
 
 environment:
