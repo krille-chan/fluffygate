@@ -2,6 +2,10 @@
 port: 8080
 bindAddress: "127.0.0.1"
 
+# Information about the corresponding app
+appName: "FluffyChat"
+appWebsite: "https://fluffychat.im"
+
 # (Optional) Display logs for debugging
 debugLogs: false
 

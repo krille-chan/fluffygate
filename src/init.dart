@@ -21,7 +21,7 @@ void init(String configFilePath) async {
   );
 
   final router = Router()
-    ..get('/', statusHandler)
+    ..get('/', (Request request) => statusHandler(request, config))
     ..post(
       '/_matrix/push/v1/notify',
       (Request request) => pushHandler(

@@ -6,6 +6,9 @@ class Config {
   final int port;
   final String? bindAddress;
 
+  final String appName;
+  final String appWebsite;
+
   final String fcmKeyFilePath;
   final String projectId;
 
@@ -20,6 +23,8 @@ class Config {
   const Config({
     required this.port,
     required this.bindAddress,
+    required this.appName,
+    required this.appWebsite,
     required this.fcmKeyFilePath,
     required this.projectId,
     required this.notificationTitle,
@@ -35,6 +40,8 @@ class Config {
     return Config(
       port: yaml['port'],
       bindAddress: yaml['bindAddress'],
+      appName: yaml['appName'],
+      appWebsite: yaml['appWebsite'],
       fcmKeyFilePath: yaml['fcmKeyFilePath'],
       projectId: yaml['projectId'],
       notificationTitle: yaml['notificationTitle'],
