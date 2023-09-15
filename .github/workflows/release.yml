@@ -1,24 +1,35 @@
-name: Build and Release
+name: Release Workflow
 
 on:
   release:
     types:
       - created
 
+concurrency:
+  group: release_workflow
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build and Release
     runs-on: ubuntu-latest
-    
     steps:
-
     - uses: actions/checkout@v3
     - uses: dart-lang/setup-dart@v1
     - run: dart pub get
     - run: dart compile exe bin/server.dart -o fluffygate
-    - name: Upload release binaries
-      uses: alexellis/upload-assets@0.4.0
+    - name: Package
+      run: |
+        mkdir build
+        mv fluffygate build/fluffygate
+        cp config.sample.yaml build/config.yaml
+        tar -czf fluffygate-linux-x86.tar.gz build/
+    - name: Upload to release
+      uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        asset_paths: '["./fluffygate"]'
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: fluffygate-linux-x86.tar.gz
+        asset_name: fluffygate-linux-x86.tar.gz
+        asset_content_type: application/gzip
