@@ -6,6 +6,7 @@ import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import 'config.dart';
+import 'not_found_handler.dart';
 import 'push_handler.dart';
 import 'status_handler.dart';
 
@@ -20,7 +21,7 @@ void init(String configFilePath) async {
     ['https://www.googleapis.com/auth/firebase.messaging'],
   );
 
-  final router = Router()
+  final router = Router(notFoundHandler: notFoundHandler)
     ..get('/', (Request request) => statusHandler(request, config))
     ..post(
       '/_matrix/push/v1/notify',
