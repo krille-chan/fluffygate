@@ -30,8 +30,9 @@ androidNotificationOptions:
     tag: "default_notification"
 apnsNotificationOptions:
   headers:
-    apns-priority: "10"
-  aps:
-    sound: "default"
-    badge: "{count}"
-    mutable-content: 1
+    apns-priority: "5"
+  payload:
+    aps:
+      sound: "default"
+      badge: "{count}"
+      mutable-content: 1
