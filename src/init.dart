@@ -33,7 +33,7 @@ void init(String configFilePath) async {
     );
 
   final server = await serve(
-    Pipeline().addMiddleware(logRequests()).addHandler(router),
+    Pipeline().addMiddleware(logRequests()).addHandler(router.call),
     config.bindAddress ?? InternetAddress.anyIPv4,
     config.port,
   );
