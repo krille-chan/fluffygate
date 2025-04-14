@@ -1,3 +1,7 @@
+## 1.1.0
+- build: Update dependencies (Krille)
+- refactor: Add missing payload for apns and reduce apns priority to 5 (Krille)
+
 ## 1.0.2
 - fix: Not found handler returns status code 200
 
