@@ -67,6 +67,8 @@ Future<Response> pushHandler(
 
     final jsonBody = jsonEncode(body)
         .replaceAll('"{count}"', unread.toString())
+        .replaceAll('{body}',
+          pushNotification.notification.content?["body"]?.toString() ?? '')
         .replaceAll('{count}', unread.toString());
     if (config.debugLogs) print('Send to FCM:--->\n$jsonBody');
     final response = await client.post(
